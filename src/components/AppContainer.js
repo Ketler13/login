@@ -1,11 +1,13 @@
 import React, { Component, PropTypes } from 'react'
-import LogInForm from './LogInForm'
+import UserMenu from './UserMenu'
+import ItemList from './ItemList'
 
 export default class AppContainer extends Component {
     render() {
         return (
             <div>
-                <LogInForm />
+                <UserMenu />
+                <ItemList />
             </div>
         )
     }

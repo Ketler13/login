@@ -1,7 +1,6 @@
 import React, {Component, PropTypes} from 'react'
-import { connect } from 'react-redux'
 
-export default class LogInForm extends Component {
+export default class RegistrationForm extends Component {
     state = {
         login: "",
         password: ""
@@ -12,7 +11,7 @@ export default class LogInForm extends Component {
             <form onSubmit = {this.handleSubmit}>
                 <input type="text" value = {this.state.login} onChange = {this.handleChange("login")}/>
                 <input type="password" value = {this.state.password} onChange = {this.handleChange("password")}/>
-                <input type="submit" value="Log in"/>
+                <input type="submit" value="Enter"/>
             </form>
         )
     }
@@ -26,7 +25,7 @@ export default class LogInForm extends Component {
     handleSubmit = ev => {
         ev && ev.preventDefault && ev.preventDefault()
         const { login, password } = this.state
-        login && password && this.props.checkUserData(login, password)
+        login && password && this.props.saveNewUser(login, password)
         this.setState({
             login: "",
             password: ""
