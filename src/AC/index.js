@@ -1,4 +1,5 @@
-import { LOAD_ITEM_LIST,LOAD_COMMENTS_BY_ITEM_ID, CHECK_USER_DATA, SAVE_NEW_USER } from '../constants'
+import { LOAD_ITEM_LIST,LOAD_COMMENTS_BY_ITEM_ID, CHECK_USER_DATA, SAVE_NEW_USER,
+        ADD_NEW_COMMENT } from '../constants'
 
 export function loadItemList() {
     return {
@@ -12,6 +13,16 @@ export function loadCommentsByItemId(id) {
         type: LOAD_COMMENTS_BY_ITEM_ID,
         payload: {id},
         callAPI: `/api/reviews/${id}`
+    }
+}
+
+export function addNewComment(config) {
+    return {
+        type: ADD_NEW_COMMENT,
+        payload: {
+            ...config
+        },
+        callAPI: `/api/reviews/${config.product}`
     }
 }
 

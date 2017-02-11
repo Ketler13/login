@@ -1,7 +1,9 @@
 import React, {Component, PropTypes} from 'react'
 import Comment from './Comment'
+import NewCommentForm from './NewCommentForm'
 import toggleOpen from '../decorators/toggleOpen'
 import { loadCommentsByItemId } from '../AC'
+import { addNewComment } from '../AC'
 import { connect } from 'react-redux'
 import { mapToArray } from '../helpers'
 
@@ -12,7 +14,7 @@ class CommentList extends Component {
         }
     }
     render() {
-        if (this.props.isGuest) return <p>Plese enter if you want leve a comment</p>
+        if (this.props.isGuest) return <p>Plese enter if you want leave a comment</p>
         return (
             <div>
                 {this.getButton()}
@@ -23,7 +25,7 @@ class CommentList extends Component {
 
     getButton() {
         return <button onClick = {this.props.toggleOpen}>
-            {this.props.isOpen ? 'hide' : 'show'} comments
+                    {this.props.isOpen ? 'hide' : 'show'} comments
                </button>
     }
 
@@ -42,7 +44,14 @@ class CommentList extends Component {
             )
         })
         return (
-            <ul>{comments}</ul>
+            <div>
+                <ul>{comments}</ul>
+                <NewCommentForm
+                    itemID = {itemID}
+                    addNewComment = {this.props.addNewComment}
+                    token = {this.props.token}
+                />
+            </div>
         )
     }
 }
@@ -50,6 +59,7 @@ class CommentList extends Component {
 export default connect((state, props) => {
     return {
         comments: state.comments.comments.get(props.itemID),
-        isLoaded: state.comments.loadedComments.includes(props.itemID)
+        isLoaded: state.comments.loadedComments.includes(props.itemID),
+        token: state.user.token
     }
-}, {loadCommentsByItemId})(toggleOpen(CommentList))
+}, {loadCommentsByItemId, addNewComment})(toggleOpen(CommentList))
