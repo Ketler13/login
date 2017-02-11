@@ -1,6 +1,7 @@
 import React, {Component, PropTypes} from 'react'
 import Comment from './Comment'
 import NewCommentForm from './NewCommentForm'
+import Loader from './Loader'
 import toggleOpen from '../decorators/toggleOpen'
 import { loadCommentsByItemId } from '../AC'
 import { addNewComment } from '../AC'
@@ -40,7 +41,7 @@ class CommentList extends Component {
     }
 
     getBody() {
-        const { itemID, isOpen } = this.props
+        const { itemID, isOpen, isLoading } = this.props
         if (!isOpen) return null
         const comments = this.props.comments && this.props.comments.map(comment => {
             return (
@@ -53,8 +54,10 @@ class CommentList extends Component {
                 </li>
             )
         })
+        const loader = isLoading && <Loader />
         return (
             <div>
+                {loader}
                 <ul>{comments}</ul>
                 <NewCommentForm
                     itemID = {itemID}
@@ -70,6 +73,7 @@ export default connect((state, props) => {
     return {
         comments: state.comments.items.get(props.itemID),
         isLoaded: state.comments.loadedComments.includes(props.itemID),
+        isLoading: state.comments.loadingComments.includes(props.itemID),
         token: state.user.token
     }
 }, {loadCommentsByItemId, addNewComment})(toggleOpen(CommentList))

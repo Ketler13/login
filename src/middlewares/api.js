@@ -20,6 +20,7 @@ export default store => next => action => {
             break
 
         case LOAD_COMMENTS_BY_ITEM_ID:
+            next({...rest, type: type + START})
             fetch(callAPI, {
               method: 'GET'
             }).then(function(response) {
@@ -33,6 +34,7 @@ export default store => next => action => {
             break
 
         case CHECK_USER_DATA:
+            next({type: type + START})
             fetch(callAPI, {
                 method: 'POST',
                 headers: {
@@ -53,6 +55,7 @@ export default store => next => action => {
             break
 
         case SAVE_NEW_USER:
+            next({type: type + START})
             fetch(callAPI, {
                 method: 'POST',
                 headers: {

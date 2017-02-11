@@ -5,9 +5,9 @@ import RegistrationForm from './RegistrationForm'
 import { checkUserData, saveNewUser } from '../AC'
 
 function UserMenu(props) {
-    const { isGuest } = props
-    const logInForm = isGuest && <LogInForm checkUserData = {props.checkUserData}/>
-    const registrationForm = isGuest && <RegistrationForm saveNewUser = {props.saveNewUser}/>
+    const { isGuest } = props.logIn
+    const logInForm = isGuest && <LogInForm {...props.logIn} checkUserData = {props.checkUserData}/>
+    const registrationForm = isGuest && <RegistrationForm {...props.registration} saveNewUser = {props.saveNewUser}/>
 
     return (
         <div>
@@ -18,7 +18,14 @@ function UserMenu(props) {
 }
 
 export default connect(state => {
+    const { isGuest, checking, errorMessage,
+            newUserIsChecking, newUserErrorMessage } = state.user
     return {
-        isGuest: state.user.isGuest
+        logIn: {
+            isGuest, checking, errorMessage
+        },
+        registration: {
+            newUserIsChecking, newUserErrorMessage
+        }
     }
 }, {checkUserData, saveNewUser})(UserMenu)

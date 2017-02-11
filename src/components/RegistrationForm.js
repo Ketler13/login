@@ -1,4 +1,5 @@
 import React, {Component, PropTypes} from 'react'
+import FaSpinner from 'react-icons/lib/fa/spinner'
 
 export default class RegistrationForm extends Component {
     static PropTypes = {
@@ -11,12 +12,17 @@ export default class RegistrationForm extends Component {
     }
 
     render() {
+        const { newUserIsChecking, newUserErrorMessage } = this.props
+        const buttonLabel = newUserIsChecking ? <FaSpinner /> : "Sign up"
         return (
-            <form onSubmit = {this.handleSubmit}>
-                <input type="text" placeholder="login" value = {this.state.login} onChange = {this.handleChange("login")}/>
-                <input type="password" placeholder="password" value = {this.state.password} onChange = {this.handleChange("password")}/>
-                <input type="submit" value="Create account"/>
-            </form>
+            <div>
+                <form>
+                    <input type="text" placeholder="login" value = {this.state.login} onChange = {this.handleChange("login")}/>
+                    <input type="password" placeholder="password" value = {this.state.password} onChange = {this.handleChange("password")}/>
+                    <button onClick = {this.handleSubmit}>{buttonLabel}</button>
+                </form>
+                <p>{newUserErrorMessage}</p>
+            </div>
         )
     }
 

@@ -1,4 +1,5 @@
 import React, {Component, PropTypes} from 'react'
+import FaSpinner from 'react-icons/lib/fa/spinner'
 import { connect } from 'react-redux'
 
 export default class LogInForm extends Component {
@@ -12,12 +13,17 @@ export default class LogInForm extends Component {
     }
 
     render() {
+        const { checking, errorMessage } = this.props
+        const buttonLabel = checking ? <FaSpinner /> : "Log in"
         return (
-            <form onSubmit = {this.handleSubmit}>
-                <input type="text" placeholder="login" value = {this.state.login} onChange = {this.handleChange("login")}/>
-                <input type="password" placeholder="password" value = {this.state.password} onChange = {this.handleChange("password")}/>
-                <input type="submit" value="Log in"/>
-            </form>
+            <div>
+                <form>
+                    <input type="text" placeholder="login" value = {this.state.login} onChange = {this.handleChange("login")}/>
+                    <input type="password" placeholder="password" value = {this.state.password} onChange = {this.handleChange("password")}/>
+                    <button onClick = {this.handleSubmit}>{buttonLabel}</button>
+                </form>
+                <p>{errorMessage}</p>
+            </div>
         )
     }
 
