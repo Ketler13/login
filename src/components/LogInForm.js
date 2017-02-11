@@ -2,6 +2,10 @@ import React, {Component, PropTypes} from 'react'
 import { connect } from 'react-redux'
 
 export default class LogInForm extends Component {
+    static PropTypes = {
+
+    }
+
     state = {
         login: "",
         password: ""
@@ -10,8 +14,8 @@ export default class LogInForm extends Component {
     render() {
         return (
             <form onSubmit = {this.handleSubmit}>
-                <input type="text" value = {this.state.login} onChange = {this.handleChange("login")}/>
-                <input type="password" value = {this.state.password} onChange = {this.handleChange("password")}/>
+                <input type="text" placeholder="login" value = {this.state.login} onChange = {this.handleChange("login")}/>
+                <input type="password" placeholder="password" value = {this.state.password} onChange = {this.handleChange("password")}/>
                 <input type="submit" value="Log in"/>
             </form>
         )

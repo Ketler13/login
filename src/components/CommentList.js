@@ -8,6 +8,16 @@ import { connect } from 'react-redux'
 import { mapToArray } from '../helpers'
 
 class CommentList extends Component {
+    static propTypes = {
+        comments: PropTypes.array,
+        isLoaded: PropTypes.bool,
+        token: PropTypes.string
+    }
+
+    static defaultProps = {
+        comments: []
+    }
+
     componentWillReceiveProps(nextProps) {
         if (!this.props.isLoaded && !this.props.isOpen && nextProps.isOpen) {
             nextProps.loadCommentsByItemId(nextProps.itemID)
@@ -58,7 +68,7 @@ class CommentList extends Component {
 
 export default connect((state, props) => {
     return {
-        comments: state.comments.comments.get(props.itemID),
+        comments: state.comments.items.get(props.itemID),
         isLoaded: state.comments.loadedComments.includes(props.itemID),
         token: state.user.token
     }

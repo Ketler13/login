@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react'
-export default function Comment(props) {
+
+function Comment(props) {
     const { rate, text, created_at } = props
     return (
         <div>
@@ -9,3 +10,11 @@ export default function Comment(props) {
         </div>
     )
 }
+
+Comment.propTypes = {
+    rate: PropTypes.number,
+    text: PropTypes.string,
+    created_at: PropTypes.string
+}
+
+export default Comment

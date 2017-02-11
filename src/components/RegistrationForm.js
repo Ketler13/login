@@ -1,6 +1,10 @@
 import React, {Component, PropTypes} from 'react'
 
 export default class RegistrationForm extends Component {
+    static PropTypes = {
+
+    }
+
     state = {
         login: "",
         password: ""
@@ -9,9 +13,9 @@ export default class RegistrationForm extends Component {
     render() {
         return (
             <form onSubmit = {this.handleSubmit}>
-                <input type="text" value = {this.state.login} onChange = {this.handleChange("login")}/>
-                <input type="password" value = {this.state.password} onChange = {this.handleChange("password")}/>
-                <input type="submit" value="Enter"/>
+                <input type="text" placeholder="login" value = {this.state.login} onChange = {this.handleChange("login")}/>
+                <input type="password" placeholder="password" value = {this.state.password} onChange = {this.handleChange("password")}/>
+                <input type="submit" value="Create account"/>
             </form>
         )
     }

@@ -1,6 +1,10 @@
 import React, {Component, PropTypes} from 'react'
 
 export default class NewCommentForm extends Component {
+    static PropTypes = {
+
+    }
+
     state = {
         rate: "",
         text: "",
@@ -10,9 +14,12 @@ export default class NewCommentForm extends Component {
     render() {
         return (
             <form onSubmit = {this.handleSubmit}>
-                <input type="number" value = {this.state.rate} required onChange = {this.handleChange("rate")}/>
-                <input type="text" value = {this.state.text} required onChange = {this.handleChange("text")}/>
-                <input type="email" value = {this.state.email} required onChange = {this.handleChange("email")}/>
+                <label for="rate">Rate this item</label>
+                <input type="number" id="rate" min="1" max="5" value = {this.state.rate} required onChange = {this.handleChange("rate")}/>
+                <label for="text">Enter comment</label>
+                <input type="text" id="text" value = {this.state.text} required onChange = {this.handleChange("text")}/>
+                <label for="email">Your e-mail</label>
+                <input type="email" id="email" value = {this.state.email} required onChange = {this.handleChange("email")}/>
                 <input type="submit" value="Add comment"/>
             </form>
         )

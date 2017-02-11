@@ -1,12 +1,12 @@
 import { LOAD_ITEM_LIST, LOAD_COMMENTS_BY_ITEM_ID, CHECK_USER_DATA, SAVE_NEW_USER,
-        ADD_NEW_COMMENT } from '../constants'
+        ADD_NEW_COMMENT, START } from '../constants'
 
 export default store => next => action => {
     const { callAPI, type, ...rest } = action
-    console.log(rest)
     if (!callAPI) return next(action)
     switch(type) {
         case LOAD_ITEM_LIST:
+            next({type: type + START})
             fetch(callAPI, {
               method: 'GET'
             }).then(function(response) {

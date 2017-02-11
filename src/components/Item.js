@@ -1,7 +1,7 @@
-import React, {Component, PropTypes} from 'react'
+import React, { PropTypes } from 'react'
 import CommentList from './CommentList'
 
-export default function Item(props) {
+function Item(props) {
     const { item, isGuest } = props
     const imgPath = "http://smktesting.herokuapp.com/static/img"
     return(
@@ -13,3 +13,10 @@ export default function Item(props) {
         </div>
     )
 }
+
+Item.propTypes = {
+    item: PropTypes.object.isRequired,
+    isGuest: PropTypes.bool
+}
+
+export default Item
