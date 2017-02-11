@@ -13,7 +13,9 @@ export default (state = new DefaultReducerState({}), action) => {
 
     switch(type) {
         case LOAD_COMMENTS_BY_ITEM_ID:
-            return state.setIn(["comments", payload.id], response)
+            return state
+                    .setIn(["comments", payload.id], response)
+                    .update("loadedComments", (loadedComments) => loadedComments.concat(payload.id))
 
     }
     return state

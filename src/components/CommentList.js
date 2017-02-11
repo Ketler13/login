@@ -7,7 +7,7 @@ import { mapToArray } from '../helpers'
 
 class CommentList extends Component {
     componentWillReceiveProps(nextProps) {
-        if (this.props.isGuest && !nextProps.isGuest) {
+        if (!this.props.isLoaded && !this.props.isOpen && nextProps.isOpen) {
             nextProps.loadCommentsByItemId(nextProps.itemID)
         }
     }
@@ -22,15 +22,15 @@ class CommentList extends Component {
     }
 
     getButton() {
-        return <a href="#" onClick = {this.props.toggleOpen}>
+        return <button onClick = {this.props.toggleOpen}>
             {this.props.isOpen ? 'hide' : 'show'} comments
-               </a>
+               </button>
     }
 
     getBody() {
         const { itemID, isOpen } = this.props
         if (!isOpen) return null
-        const comments = this.props.comments && this.props.comments.get(itemID).map(comment => {
+        const comments = this.props.comments && this.props.comments.map(comment => {
             return (
                 <li key = {comment.id}>
                     <Comment
@@ -41,15 +41,15 @@ class CommentList extends Component {
                 </li>
             )
         })
-        console.log(comments)
         return (
             <ul>{comments}</ul>
         )
     }
 }
 
-export default connect(state => {
+export default connect((state, props) => {
     return {
-        comments: state.comments.comments
+        comments: state.comments.comments.get(props.itemID),
+        isLoaded: state.comments.loadedComments.includes(props.itemID)
     }
 }, {loadCommentsByItemId})(toggleOpen(CommentList))
