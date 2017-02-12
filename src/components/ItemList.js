@@ -1,6 +1,7 @@
 import React, {Component, PropTypes} from 'react'
 import Item from './Item'
 import Loader from './Loader'
+import {Link} from 'react-router'
 import { connect } from 'react-redux'
 import { loadItemList } from '../AC'
 import {mapToArray} from '../helpers'

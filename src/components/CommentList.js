@@ -23,7 +23,11 @@ class CommentList extends Component {
         if (!this.props.isLoaded && !this.props.isOpen && nextProps.isOpen) {
             nextProps.loadCommentsByItemId(nextProps.itemID)
         }
+        if (nextProps.isGuest && !this.props.isGuest) {
+            nextProps.closeWhenLogOut()
+        }
     }
+
     render() {
         if (this.props.isGuest) return <p>Plese enter if you want leave a comment</p>
         return (
@@ -82,6 +86,7 @@ export default connect((state, props) => {
         isLoaded: loadedComments.includes(props.itemID),
         isLoading: loadingComments.includes(props.itemID),
         token: state.user.token,
+        isGuest: state.user.isGuest,
         commentIsSending, commentIsSent
     }
 }, {loadCommentsByItemId, addNewComment})(toggleOpen(CommentList))
