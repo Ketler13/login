@@ -1,8 +1,13 @@
 import React, {Component, PropTypes} from 'react'
+import FaSpinner from 'react-icons/lib/fa/spinner'
 
 export default class NewCommentForm extends Component {
     static PropTypes = {
 
+    }
+
+    componentWillReceiveProps(nextProps) {
+        nextProps.commentIsSent && nextProps.loadCommentsByItemId(nextProps.itemID)
     }
 
     state = {
@@ -12,15 +17,17 @@ export default class NewCommentForm extends Component {
     }
 
     render() {
+        const { commentIsSending, commentIsSent } = this.props
+        const buttonLabel = commentIsSending ? <FaSpinner/> : "Send"
         return (
-            <form onSubmit = {this.handleSubmit}>
+            <form>
                 <label htmlFor="rate">Rate this item</label>
                 <input type="number" id="rate" min="1" max="5" value = {this.state.rate} required onChange = {this.handleChange("rate")}/>
                 <label htmlFor="text">Enter comment</label>
                 <input type="text" id="text" value = {this.state.text} required onChange = {this.handleChange("text")}/>
                 <label htmlFor="email">Your e-mail</label>
                 <input type="email" id="email" value = {this.state.email} required onChange = {this.handleChange("email")}/>
-                <input type="submit" value="Add comment"/>
+                <button onClick = {this.handleSubmit}>{buttonLabel}</button>
             </form>
         )
     }

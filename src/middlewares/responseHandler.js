@@ -22,8 +22,12 @@ export default store => next => action => {
             response.success && next({...action, type: type + SUCCESS})
             !response.success && next({...action, type: type + FAIL})
             break
-    }
 
-    console.log(action)
-    next(action)
+        case ADD_NEW_COMMENT:
+            response.success && next({...action, type: type + SUCCESS})
+            !response.success && next({...action, type: type + FAIL})
+
+        default:
+            next(action)
+    }
 }

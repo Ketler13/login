@@ -76,6 +76,7 @@ export default store => next => action => {
             break
 
         case ADD_NEW_COMMENT:
+            next({type: type + START})
             fetch(callAPI, {
                 method: 'POST',
                 headers: {

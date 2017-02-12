@@ -17,10 +17,11 @@ export default (state = new DefaultReducerState, action) => {
 
     switch(type) {
         case CHECK_USER_DATA + START:
+        console.log("start")
             return state
+                    .set("errorMessage", null)
                     .set("checking", true)
                     .set("checked", false)
-                    .set("errorMessage", null)
 
         case CHECK_USER_DATA + SUCCESS:
             return state
@@ -37,9 +38,9 @@ export default (state = new DefaultReducerState, action) => {
 
         case SAVE_NEW_USER + START:
             return state
+                    .set("newUserErrorMessage", null)
                     .set("newUserIsChecking", true)
                     .set("newUserIsChecked", false)
-                    .set("newUserErrorMessage", null)
 
         case SAVE_NEW_USER + SUCCESS:
             return state
@@ -51,7 +52,7 @@ export default (state = new DefaultReducerState, action) => {
             return state
                     .set("newUserIsChecked", false)
                     .set("newUserIsChecking", false)
-                    .set("errorMessage", response.message)
+                    .set("newUserErrorMessage", response.message)
     }
 
     return state

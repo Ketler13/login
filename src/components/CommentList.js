@@ -41,7 +41,8 @@ class CommentList extends Component {
     }
 
     getBody() {
-        const { itemID, isOpen, isLoading } = this.props
+        const { itemID, isOpen, isLoading, token, commentIsSending,
+                commentIsSent, addNewComment, loadCommentsByItemId } = this.props
         if (!isOpen) return null
         const comments = this.props.comments && this.props.comments.map(comment => {
             return (
@@ -49,6 +50,7 @@ class CommentList extends Component {
                     <Comment
                         rate = {comment.rate}
                         created_at = {comment.created_at}
+                        user = {comment.created_by.username}
                         text = {comment.text}
                     />
                 </li>
@@ -61,8 +63,11 @@ class CommentList extends Component {
                 <ul>{comments}</ul>
                 <NewCommentForm
                     itemID = {itemID}
-                    addNewComment = {this.props.addNewComment}
-                    token = {this.props.token}
+                    token = {token}
+                    commentIsSending = {commentIsSending}
+                    commentIsSent = {commentIsSent}
+                    loadCommentsByItemId = {loadCommentsByItemId}
+                    addNewComment = {addNewComment}
                 />
             </div>
         )
@@ -70,10 +75,13 @@ class CommentList extends Component {
 }
 
 export default connect((state, props) => {
+    const { items, loadedComments, loadingComments, commentIsSending,
+            commentIsSent } = state.comments
     return {
-        comments: state.comments.items.get(props.itemID),
-        isLoaded: state.comments.loadedComments.includes(props.itemID),
-        isLoading: state.comments.loadingComments.includes(props.itemID),
-        token: state.user.token
+        comments: items.get(props.itemID),
+        isLoaded: loadedComments.includes(props.itemID),
+        isLoading: loadingComments.includes(props.itemID),
+        token: state.user.token,
+        commentIsSending, commentIsSent
     }
 }, {loadCommentsByItemId, addNewComment})(toggleOpen(CommentList))
