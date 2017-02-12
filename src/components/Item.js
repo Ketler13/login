@@ -1,5 +1,7 @@
 import React, { PropTypes } from 'react'
 import CommentList from './CommentList'
+import { connect } from 'react-redux'
+import {mapToArray} from '../helpers'
 
 function Item(props) {
     const { item, isGuest } = props
@@ -19,4 +21,10 @@ Item.propTypes = {
     isGuest: PropTypes.bool
 }
 
-export default Item
+export default connect((state, props) => {
+    const id = Number(props.id)
+    return {
+        item: state.items.entities.get(id),
+        isGuest: state.user.isGuest
+    }
+})(Item)

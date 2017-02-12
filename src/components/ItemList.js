@@ -22,13 +22,21 @@ class ItemList extends Component {
 
     render() {
         const { items, isGuest, loading } = this.props
-        const elements = items.map(item => {
+        //for Router
+        const menu = items.map(item => {
             return (
                 <li key = {item.id}>
-                    <Item item = {item} isGuest = {isGuest} />
+                    <Link to={`/products/${item.id}`}>{item.title}</Link>
                 </li>
             )
         })
+        // const elements = items.map(item => {
+        //     return (
+        //         <li key = {item.id}>
+        //             <Item item = {item} isGuest = {isGuest} />
+        //         </li>
+        //     )
+        // })
         const itemListStyle = {
             listStyleType: "none"
         }
@@ -37,9 +45,17 @@ class ItemList extends Component {
             <div>
                 <h2>ItemList</h2>
                 {loader}
-                <ul style = {itemListStyle}>{elements}</ul>
+                <ul style = {itemListStyle}>{menu}</ul>
             </div>
         )
+        // return (
+        //     <div>
+        //         <h2>ItemList</h2>
+        //         {loader}
+        //         <ul>{menu}</ul>
+        //         <ul style = {itemListStyle}>{elements}</ul>
+        //     </div>
+        // )
     }
 }
 
