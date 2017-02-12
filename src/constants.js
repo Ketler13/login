@@ -3,6 +3,7 @@ export const LOAD_COMMENTS_BY_ITEM_ID = "LOAD_COMMENTS_BY_ITEM_ID"
 
 export const CHECK_USER_DATA = "CHECK_USER_DATA"
 export const SAVE_NEW_USER = "SAVE_NEW_USER"
+export const LOG_OUT = "LOG_OUT"
 
 export const ADD_NEW_COMMENT = "ADD_NEW_COMMENT"
 

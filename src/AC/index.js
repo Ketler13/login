@@ -1,5 +1,5 @@
 import { LOAD_ITEM_LIST,LOAD_COMMENTS_BY_ITEM_ID, CHECK_USER_DATA, SAVE_NEW_USER,
-        ADD_NEW_COMMENT } from '../constants'
+        ADD_NEW_COMMENT, LOG_OUT } from '../constants'
 
 export function loadItemList() {
     return {
@@ -43,5 +43,11 @@ export function saveNewUser(login, password) {
             login, password
         },
         callAPI: '/api/register/'
+    }
+}
+
+export function logOut() {
+    return {
+        type: LOG_OUT
     }
 }

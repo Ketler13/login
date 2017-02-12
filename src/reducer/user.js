@@ -1,4 +1,4 @@
-import { CHECK_USER_DATA, SAVE_NEW_USER, START, SUCCESS, FAIL } from '../constants'
+import { CHECK_USER_DATA, SAVE_NEW_USER, LOG_OUT, START, SUCCESS, FAIL } from '../constants'
 import { Record } from 'immutable'
 
 const DefaultReducerState = Record({
@@ -17,7 +17,6 @@ export default (state = new DefaultReducerState, action) => {
 
     switch(type) {
         case CHECK_USER_DATA + START:
-        console.log("start")
             return state
                     .set("errorMessage", null)
                     .set("checking", true)
@@ -53,6 +52,9 @@ export default (state = new DefaultReducerState, action) => {
                     .set("newUserIsChecked", false)
                     .set("newUserIsChecking", false)
                     .set("newUserErrorMessage", response.message)
+
+        case LOG_OUT:
+            return new DefaultReducerState({})
     }
 
     return state

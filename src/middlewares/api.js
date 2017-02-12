@@ -101,8 +101,3 @@ export default store => next => action => {
     }
 
 }
-
-// function makeReq() {
-//
-// }
-// makeReq()
