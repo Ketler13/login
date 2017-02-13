@@ -1,11 +1,12 @@
 import React, { PropTypes } from 'react'
+import Rater from './Rater'
 
 function Comment(props) {
     const { rate, text, created_at, user } = props
     return (
         <section className = "comment">
-            <p>{rate}</p>
             <p><b>{user}</b> said:</p>
+            <Rater rate = {rate}/>
             <p>{text}</p>
             <p>{created_at}</p>
         </section>

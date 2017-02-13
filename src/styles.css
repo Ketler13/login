@@ -127,3 +127,7 @@ ul {
 .comment {
     margin: 10px 0;
 }
+
+.rater li {
+    display: inline;
+}
