@@ -5,12 +5,12 @@ function Item(props) {
     const { item, isGuest } = props
     const imgPath = "http://smktesting.herokuapp.com/static/img"
     return(
-        <div>
-            <h3>{item.title}</h3>
+        <section className = "item">
+            <h3>Product {item.id}</h3>
             <img src = {`${imgPath}${item.id}.png`}></img>
             <p>{item.text}</p>
             <CommentList itemID = {item.id} isGuest = {isGuest}/>
-        </div>
+        </section>
     )
 }
 

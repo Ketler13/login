@@ -3,11 +3,12 @@ import React, { PropTypes } from 'react'
 function Comment(props) {
     const { rate, text, created_at, user } = props
     return (
-        <div>
-            <p>Posted by {user} at {created_at}</p>
-            <p>{text}</p>
+        <section className = "comment">
             <p>{rate}</p>
-        </div>
+            <p><b>{user}</b> said:</p>
+            <p>{text}</p>
+            <p>{created_at}</p>
+        </section>
     )
 }
 

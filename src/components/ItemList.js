@@ -34,11 +34,11 @@ class ItemList extends Component {
         }
         const loader = loading && <Loader />
         return (
-            <div>
-                <h2>ItemList</h2>
+            <main>
+                <h2>Look for our list of products</h2>
                 {loader}
-                <ul style = {itemListStyle}>{elements}</ul>
-            </div>
+                <ul className = "item_list" style = {itemListStyle}>{elements}</ul>
+            </main>
         )
     }
 }

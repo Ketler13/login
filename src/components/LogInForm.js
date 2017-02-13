@@ -15,14 +15,15 @@ export default class LogInForm extends Component {
     render() {
         const { checking, errorMessage } = this.props
         const buttonLabel = checking ? <FaSpinner /> : "Log in"
+        const errorElement = errorMessage ? <p>{errorMessage}</p> : null
         return (
-            <div>
+            <div className="login_form">
                 <form>
-                    <input type="text" placeholder="login" value = {this.state.login} onChange = {this.handleChange("login")}/>
-                    <input type="password" placeholder="password" value = {this.state.password} onChange = {this.handleChange("password")}/>
-                    <button onClick = {this.handleSubmit}>{buttonLabel}</button>
+                    <input className = "header_input" type="text" placeholder="login" value = {this.state.login} onChange = {this.handleChange("login")}/>
+                    <input className = "header_input" type="password" placeholder="password" value = {this.state.password} onChange = {this.handleChange("password")}/>
+                    <button className = "header_button login_button" onClick = {this.handleSubmit}>{buttonLabel}</button>
                 </form>
-                <p>{errorMessage}</p>
+                {errorElement}
             </div>
         )
     }

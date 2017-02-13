@@ -21,13 +21,13 @@ export default class NewCommentForm extends Component {
         const buttonLabel = commentIsSending ? <FaSpinner/> : "Send"
         return (
             <form>
-                <label htmlFor="rate">Rate this item</label>
-                <input type="number" id="rate" min="1" max="5" value = {this.state.rate} required onChange = {this.handleChange("rate")}/>
-                <label htmlFor="text">Enter comment</label>
-                <input type="text" id="text" value = {this.state.text} required onChange = {this.handleChange("text")}/>
-                <label htmlFor="email">Your e-mail</label>
-                <input type="email" id="email" value = {this.state.email} required onChange = {this.handleChange("email")}/>
-                <button onClick = {this.handleSubmit}>{buttonLabel}</button>
+                <p><label htmlFor="rate">Rate this item</label></p>
+                <p><input type="number" id="rate" min="1" max="5" value = {this.state.rate} required onChange = {this.handleChange("rate")}/></p>
+                <p><label htmlFor="text">Enter comment</label></p>
+                <p><input type="text" id="text" value = {this.state.text} required onChange = {this.handleChange("text")}/></p>
+                <p><label htmlFor="email">Your e-mail</label></p>
+                <p><input type="email" id="email" value = {this.state.email} required onChange = {this.handleChange("email")}/></p>
+                <p><button onClick = {this.handleSubmit}>{buttonLabel}</button></p>
             </form>
         )
     }
