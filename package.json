@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/Ketler13/app#readme",
   "devDependencies": {
+    "autoprefixer": "^6.7.2",
     "babel-core": "^6.13.2",
     "babel-loader": "^6.2.4",
     "babel-preset-es2015": "^6.13.2",
@@ -28,6 +29,10 @@
     "babel-preset-stage-0": "^6.5.0",
     "concurrently": "^3.1.0",
     "css-loader": "^0.26.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "postcss-loader": "^1.3.0",
+    "postcss-smart-import": "^0.6.7",
+    "precss": "^1.4.0",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1"

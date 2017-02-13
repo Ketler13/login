@@ -1,0 +1,6 @@
+$radius: 10px;
+
+button {
+    background-color: red;
+    border-radius: $radius;
+}
