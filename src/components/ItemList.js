@@ -35,7 +35,7 @@ class ItemList extends Component {
         const loader = loading && <Loader />
         return (
             <main>
-                <h2>Look for our list of products</h2>
+                <h2>Look at our list of products</h2>
                 {loader}
                 <ul className = "item_list" style = {itemListStyle}>{elements}</ul>
             </main>

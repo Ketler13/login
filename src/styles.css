@@ -131,3 +131,22 @@ ul {
 .rater li {
     display: inline;
 }
+
+.comment_input {
+    width: 100%;
+    margin: 3px 0;
+    border: solid 1px $color_concrete;
+    border-radius: $input_radius;
+}
+
+.comment_button {
+    width: 100%;
+    margin: 3px 0;
+    border: solid 0px;
+    background-color: $color_green_sea;
+    transition: background-color .3s;
+}
+
+.comment_button:hover {
+    background-color: $color_turquoise;
+}
