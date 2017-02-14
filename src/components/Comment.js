@@ -7,7 +7,7 @@ function Comment(props) {
         <section className = "comment">
             <p><b>{user}</b> said:</p>
             <Rater rate = {rate}/>
-            <p>{text}</p>
+            <p className = "comment_text">{text}</p>
             <p>{created_at}</p>
         </section>
     )
