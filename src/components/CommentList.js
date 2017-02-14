@@ -29,7 +29,7 @@ class CommentList extends Component {
     }
 
     render() {
-        if (this.props.isGuest) return <p>Plese enter if you want leave a comment</p>
+        if (this.props.isGuest) return <p>Please enter if you want to leave a comment</p>
         return (
             <div>
                 {this.getButton()}
@@ -39,7 +39,7 @@ class CommentList extends Component {
     }
 
     getButton() {
-        return <button onClick = {this.props.toggleOpen}>
+        return <button className = "comment_list_toggler" onClick = {this.props.toggleOpen}>
                     {this.props.isOpen ? 'hide' : 'show'} comments
                </button>
     }
@@ -62,9 +62,9 @@ class CommentList extends Component {
         })
         const loader = isLoading && <Loader />
         return (
-            <div>
+            <section>
                 {loader}
-                <ul>{comments}</ul>
+                <ul className = "comment_list">{comments}</ul>
                 <NewCommentForm
                     itemID = {itemID}
                     token = {token}
@@ -73,7 +73,7 @@ class CommentList extends Component {
                     loadCommentsByItemId = {loadCommentsByItemId}
                     addNewComment = {addNewComment}
                 />
-            </div>
+            </section>
         )
     }
 }

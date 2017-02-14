@@ -1,13 +1,15 @@
 import React, { PropTypes } from 'react'
+import Rater from './Rater'
 
 function Comment(props) {
     const { rate, text, created_at, user } = props
     return (
-        <div>
-            <p>Posted by {user} at {created_at}</p>
+        <section className = "comment">
+            <p><b>{user}</b> said:</p>
+            <Rater rate = {rate}/>
             <p>{text}</p>
-            <p>{rate}</p>
-        </div>
+            <p>{created_at}</p>
+        </section>
     )
 }
 

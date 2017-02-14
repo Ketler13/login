@@ -1,5 +1,6 @@
 import React, {Component, PropTypes} from 'react'
 import FaSpinner from 'react-icons/lib/fa/spinner'
+import Rater from './Rater'
 
 export default class NewCommentForm extends Component {
     static PropTypes = {
@@ -11,7 +12,7 @@ export default class NewCommentForm extends Component {
     }
 
     state = {
-        rate: "",
+        rate: 0,
         text: "",
         email: ""
     }
@@ -20,21 +21,29 @@ export default class NewCommentForm extends Component {
         const { commentIsSending, commentIsSent } = this.props
         const buttonLabel = commentIsSending ? <FaSpinner/> : "Send"
         return (
-            <form>
-                <label htmlFor="rate">Rate this item</label>
-                <input type="number" id="rate" min="1" max="5" value = {this.state.rate} required onChange = {this.handleChange("rate")}/>
-                <label htmlFor="text">Enter comment</label>
-                <input type="text" id="text" value = {this.state.text} required onChange = {this.handleChange("text")}/>
-                <label htmlFor="email">Your e-mail</label>
-                <input type="email" id="email" value = {this.state.email} required onChange = {this.handleChange("email")}/>
-                <button onClick = {this.handleSubmit}>{buttonLabel}</button>
-            </form>
+            <section>
+                <p>Rate our product:</p>
+                <Rater rate = {this.state.rate} handleRate = {this.handleRate}/>
+                <form>
+                    <p><label htmlFor="text">Enter comment:</label></p>
+                    <p><input className = "comment_input" type="text" id="text" value = {this.state.text} required onChange = {this.handleChange("text")}/></p>
+                    <p><label htmlFor="email">Your e-mail:</label></p>
+                    <p><input className = "comment_input" type="email" id="email" value = {this.state.email} required onChange = {this.handleChange("email")}/></p>
+                    <p><button className = "comment_button" onClick = {this.handleSubmit}>{buttonLabel}</button></p>
+                </form>
+            </section>
         )
     }
 
     handleChange = field => ev => {
         this.setState({
             [field]: ev.target.value
+        })
+    }
+
+    handleRate = rate => ev => {
+        this.setState({
+            rate: rate
         })
     }
 
@@ -47,9 +56,9 @@ export default class NewCommentForm extends Component {
             rate, text, email, created_at, token,
             product: itemID
         }
-        addNewComment(config)
+        rate && addNewComment(config)
         this.setState({
-            rate: "",
+            rate: 0,
             text: "",
             email: ""
         })
