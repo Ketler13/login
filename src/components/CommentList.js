@@ -29,7 +29,7 @@ class CommentList extends Component {
     }
 
     render() {
-        if (this.props.isGuest) return <p>Plese enter if you want leave a comment</p>
+        if (this.props.isGuest) return <p>Please enter if you want to leave a comment</p>
         return (
             <div>
                 {this.getButton()}
