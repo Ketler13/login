@@ -8,6 +8,7 @@ import {mapToArray} from '../helpers'
 function Item(props) {
     const { item, isGuest, loaded } = props
     if (!loaded) return <Loader />
+    if (!item) return <div><p>Sorry, we do not have this page</p></div>
     const imgPath = "http://smktesting.herokuapp.com/static/img"
     return(
         <div>

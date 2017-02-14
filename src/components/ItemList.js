@@ -21,7 +21,7 @@ class ItemList extends Component {
     }
 
     render() {
-        const { items, isGuest, loading } = this.props
+        const { items, isGuest } = this.props
         const menu = items.map(item => {
             return (
                 <li key = {item.id}>
@@ -33,7 +33,6 @@ class ItemList extends Component {
         const itemListStyle = {
             listStyleType: "none"
         }
-        const loader = loading && <Loader />
         return (
             <nav>
                 <h1>Look at our product list</h1>
@@ -46,7 +45,6 @@ class ItemList extends Component {
 export default connect((state) => {
     return {
         items: mapToArray(state.items.entities),
-        isGuest: state.user.isGuest,
-        loading: state.items.loading
+        isGuest: state.user.isGuest
     }
 }, {loadItemList})(ItemList)

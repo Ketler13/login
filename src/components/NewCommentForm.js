@@ -4,7 +4,12 @@ import Rater from './Rater'
 
 export default class NewCommentForm extends Component {
     static PropTypes = {
-
+        itemID: PropTypes.bool.isRequired,
+        commentIsSending: PropTypes.bool,
+        commentIsSent: PropTypes.bool,
+        token: PropTypes.number.isRequired,
+        addNewComment: PropTypes.func,
+        loadCommentsByItemId: PropTypes.func
     }
 
     componentWillReceiveProps(nextProps) {

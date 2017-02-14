@@ -7,8 +7,11 @@ import { checkUserData, saveNewUser, logOut } from '../AC'
 function UserMenu(props) {
     const { isGuest } = props.logIn
     const { newUserIsChecked } = props.registration
+    // показывать формы, если человек не вошёл
     const logInForm = isGuest && <LogInForm {...props.logIn} checkUserData = {props.checkUserData}/>
+    // дополнительно скрывать, если создание нового пользовател прошло успешно
     const registrationForm = isGuest && !newUserIsChecked && <RegistrationForm {...props.registration} saveNewUser = {props.saveNewUser}/>
+    // показывать, если ползьователь в сети
     const logOut = isGuest ? null : <button className = "header_button" onClick = {props.logOut}>Log out</button>
 
     return (
@@ -18,6 +21,18 @@ function UserMenu(props) {
             {logOut}
         </header>
     )
+}
+
+UserMenu.propTypes = {
+    isGuest: PropTypes.bool,
+    checking: PropTypes.bool,
+    errorMessage: PropTypes.string,
+    newUserIsChecking: PropTypes.bool,
+    newUserErrorMessage: PropTypes.string,
+    newUserIsChecked: PropTypes.bool,
+    checkUserData: PropTypes.func,
+    saveNewUser: PropTypes.func,
+    logOut: PropTypes.func
 }
 
 export default connect(state => {
