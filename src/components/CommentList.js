@@ -19,6 +19,8 @@ class CommentList extends Component {
         comments: []
     }
 
+    // загружать комментарии, только если их еще нет в сторе
+    // сбрасывать состоние редьюсера user на дефолтный при выходе
     componentWillReceiveProps(nextProps) {
         if (!this.props.isLoaded && !this.props.isOpen && nextProps.isOpen) {
             nextProps.loadCommentsByItemId(nextProps.itemID)

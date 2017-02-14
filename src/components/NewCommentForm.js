@@ -57,7 +57,7 @@ export default class NewCommentForm extends Component {
             product: itemID
         }
         rate && addNewComment(config)
-        this.setState({
+        rate && this.setState({
             rate: 0,
             text: "",
             email: ""

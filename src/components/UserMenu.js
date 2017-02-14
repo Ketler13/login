@@ -7,6 +7,7 @@ import { checkUserData, saveNewUser, logOut } from '../AC'
 function UserMenu(props) {
     const { isGuest } = props.logIn
     const { newUserIsChecked } = props.registration
+    // показывать формы в соответствии со статусом юзера
     const logInForm = isGuest && <LogInForm {...props.logIn} checkUserData = {props.checkUserData}/>
     const registrationForm = !newUserIsChecked && isGuest && <RegistrationForm {...props.registration} saveNewUser = {props.saveNewUser}/>
     const logOut = isGuest ? null : <button className = "header_button" onClick = {props.logOut}>Log out</button>

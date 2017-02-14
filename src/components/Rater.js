@@ -2,6 +2,8 @@ import React, { Component, PropTypes } from 'react'
 import FaStar from 'react-icons/lib/fa/star'
 import FaStarO from 'react-icons/lib/fa/star-o'
 
+// в зависимости от того, передан ли в пропсах handler, компонент может как
+// создавать новый рейтинг, так и отображать приходщий сверху
 function Rater(props) {
     let { rate, handleRate } = props
     let starRate
