@@ -18,9 +18,9 @@ export default class LogInForm extends Component {
         return (
             <div>
                 <form>
-                    <input type="text" placeholder="login" value = {this.state.login} onChange = {this.handleChange("login")}/>
-                    <input type="password" placeholder="password" value = {this.state.password} onChange = {this.handleChange("password")}/>
-                    <button onClick = {this.handleSubmit}>{buttonLabel}</button>
+                    <input className = "header_input" type="text" placeholder="login" value = {this.state.login} onChange = {this.handleChange("login")}/>
+                    <input className = "header_input" type="password" placeholder="password" value = {this.state.password} onChange = {this.handleChange("password")}/>
+                    <button className = "header_button" onClick = {this.handleSubmit}>{buttonLabel}</button>
                 </form>
                 <p>{errorMessage}</p>
             </div>

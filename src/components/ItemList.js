@@ -30,32 +30,18 @@ class ItemList extends Component {
                 </li>
             )
         })
-        // const elements = items.map(item => {
-        //     return (
-        //         <li key = {item.id}>
-        //             <Item item = {item} isGuest = {isGuest} />
-        //         </li>
-        //     )
-        // })
+
         const itemListStyle = {
             listStyleType: "none"
         }
         const loader = loading && <Loader />
         return (
-            <div>
+            <main>
                 <h2>ItemList</h2>
                 {loader}
-                <ul style = {itemListStyle}>{menu}</ul>
-            </div>
+                <ul className = "item_list">{menu}</ul>
+            </main>
         )
-        // return (
-        //     <div>
-        //         <h2>ItemList</h2>
-        //         {loader}
-        //         <ul>{menu}</ul>
-        //         <ul style = {itemListStyle}>{elements}</ul>
-        //     </div>
-        // )
     }
 }
 

@@ -6,28 +6,29 @@ import { checkUserData, saveNewUser, logOut } from '../AC'
 
 function UserMenu(props) {
     const { isGuest } = props.logIn
+    const { newUserIsChecked } = props.registration
     const logInForm = isGuest && <LogInForm {...props.logIn} checkUserData = {props.checkUserData}/>
-    const registrationForm = isGuest && <RegistrationForm {...props.registration} saveNewUser = {props.saveNewUser}/>
-    const logOut = isGuest ? null : <button onClick = {props.logOut}>Log out</button>
+    const registrationForm = isGuest && !newUserIsChecked && <RegistrationForm {...props.registration} saveNewUser = {props.saveNewUser}/>
+    const logOut = isGuest ? null : <button className = "header_button" onClick = {props.logOut}>Log out</button>
 
     return (
-        <div>
+        <header className = "user_menu">
             {logInForm}
             {registrationForm}
             {logOut}
-        </div>
+        </header>
     )
 }
 
 export default connect(state => {
     const { isGuest, checking, errorMessage,
-            newUserIsChecking, newUserErrorMessage } = state.user
+            newUserIsChecking, newUserErrorMessage, newUserIsChecked } = state.user
     return {
         logIn: {
             isGuest, checking, errorMessage
         },
         registration: {
-            newUserIsChecking, newUserErrorMessage
+            newUserIsChecking, newUserErrorMessage, newUserIsChecked
         }
     }
 }, {checkUserData, saveNewUser, logOut})(UserMenu)
