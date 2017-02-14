@@ -1,6 +1,4 @@
 import React, { PropTypes } from 'react'
-import Menu from '../components/menu/Menu'
-import MenuItem from '../components/menu/MenuItem'
 import ItemList from '../components/ItemList'
 
 function ItemListRoute(props) {
@@ -8,7 +6,9 @@ function ItemListRoute(props) {
         <div>
             <ItemList />
             {props.children}
-            {props.item}
+            <main   className = "item_list">
+                {props.item}
+            </main>
         </div>
     )
 }

@@ -29,6 +29,12 @@ $color_turquoise: rgba(26, 188, 156,1.0);
 $color_midnight_blue: rgba(44, 62, 80,1.0);
 $color_pumpkin: rgba(211, 84, 0,1.0);
 
+h1 {
+    margin: 10px 40px;
+    font-size: 30px;
+    font-family: 'Raleway', sans-serif;
+}
+
 h2 {
     margin: 10px 40px;
     font-size: 24px;
@@ -99,6 +105,25 @@ ul {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
+}
+
+.item_list_link_list {
+    display: flex;
+}
+
+.item_list_link_item {
+    display: block;
+    width: 70px;
+    height: 30px;
+    margin-left: 10px;
+    border-radius: $input_radius;
+    background-color: $color_concrete;
+    text-decoration: none;
+    transition: background-color .3s;
+}
+
+.item_list_link_item:hover {
+    background-color: $color_green_sea;
 }
 
 .item {

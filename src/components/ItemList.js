@@ -22,11 +22,10 @@ class ItemList extends Component {
 
     render() {
         const { items, isGuest, loading } = this.props
-        //for Router
         const menu = items.map(item => {
             return (
                 <li key = {item.id}>
-                    <Link to={`/products/${item.id}`}>{item.title}</Link>
+                    <Link   className = "item_list_link_item" to={`/products/${item.id}`}>Product {item.id}</Link>
                 </li>
             )
         })
@@ -36,11 +35,10 @@ class ItemList extends Component {
         }
         const loader = loading && <Loader />
         return (
-            <main>
-                <h2>ItemList</h2>
-                {loader}
-                <ul className = "item_list">{menu}</ul>
-            </main>
+            <nav>
+                <h1>Look at our product list</h1>
+                <ul className = "item_list_link_list">{menu}</ul>
+            </nav>
         )
     }
 }
